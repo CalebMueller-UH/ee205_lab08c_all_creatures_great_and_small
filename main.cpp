@@ -15,7 +15,7 @@
 int main() {
     Animal myFirstAnimal = Animal( "Felis catus" );
     myFirstAnimal.setGender( MALE );
-    myFirstAnimal.setWeight( 11.5, UnitOfMeasure::KG );
+    myFirstAnimal.setWeight(11.5, WeightUnit::KG );
     myFirstAnimal.printInfo();
 
     return 0;

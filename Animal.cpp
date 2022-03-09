@@ -12,8 +12,8 @@
 
 using namespace std;
 
-//const UnitOfMeasure Animal::DEFAULT_UNIT_OF_MEASURE = UnitOfMeasure::LBS;
-const UnitOfMeasure Animal::DEFAULT_UNIT_OF_MEASURE = UnitOfMeasure::KG;
+//const UnitOfMeasure Animal::DEFAULT_WEIGHT_UNIT = WeightUnit::LBS;
+const WeightUnit Animal::DEFAULT_WEIGHT_UNIT = WeightUnit::KG;
 
 const string Animal::_kingdom = "Animalia";
 
@@ -54,12 +54,12 @@ void Animal::setGender(Gender gender) {
     _gender = gender;
 }
 
-void Animal::setWeight(float weight, UnitOfMeasure units) {
+void Animal::setWeight(float weight, WeightUnit units) {
     switch(units)
     {
-        case(UnitOfMeasure::LBS):
+        case(WeightUnit::LBS):
         {
-            if(DEFAULT_UNIT_OF_MEASURE == UnitOfMeasure::LBS){
+            if(DEFAULT_WEIGHT_UNIT == WeightUnit::LBS){
                 _weight = weight;
             } else
             {
@@ -68,9 +68,9 @@ void Animal::setWeight(float weight, UnitOfMeasure units) {
             }
             break;
         }
-        case(UnitOfMeasure::KG):
+        case(WeightUnit::KG):
         {
-            if(DEFAULT_UNIT_OF_MEASURE == UnitOfMeasure::KG){
+            if(DEFAULT_WEIGHT_UNIT == WeightUnit::KG){
                 _weight = weight;
             } else
             {
@@ -89,13 +89,13 @@ void Animal::printInfo() {
     if(this->isValid())
     {
         std::string units_literal;
-        switch(DEFAULT_UNIT_OF_MEASURE){
-            case(UnitOfMeasure::LBS):
+        switch(DEFAULT_WEIGHT_UNIT){
+            case(WeightUnit::LBS):
             {
                 units_literal = "lbs";
                 break;
             }
-            case(UnitOfMeasure::KG):
+            case(WeightUnit::KG):
             {
                 units_literal = "kg";
                 break;
