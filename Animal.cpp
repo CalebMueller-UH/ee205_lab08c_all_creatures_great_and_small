@@ -22,10 +22,15 @@ Animal::Animal(const std::string &species) : _species(species) {}
 
 Animal::Animal(const std::string &species, Gender gender) : _species(species), _gender(gender) {}
 
-Animal::Animal(const std::string &species, Gender gender, float weight) : _species(species), _gender(gender),
-                                                                          _weight(weight) {}
+Animal::Animal(const std::string &species, Gender gender, float weight) : _species(species), _gender(gender)
+{
+    this->setWeight(weight, DEFAULT_WEIGHT_UNIT);
+}
 
-Animal::Animal(Gender gender, float weight) : _gender(gender), _weight(weight) {}
+Animal::Animal(Gender gender, float weight) : _gender(gender)
+{
+    this->setWeight(weight, DEFAULT_WEIGHT_UNIT);
+}
 
 
 // Animal Getter Definitions
