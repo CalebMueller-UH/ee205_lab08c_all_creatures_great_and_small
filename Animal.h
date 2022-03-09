@@ -16,9 +16,17 @@
 
 enum Gender { UNKNOWN_GENDER, MALE, FEMALE };
 
+enum class UnitOfMeasure { LBS, KG };
+
 const float UNKNOWN_WEIGHT = -1;
 
+const float LBS_PER_KG = 2.20462;
+
 class Animal {
+private:
+    static const std::string _kingdom;
+    static const UnitOfMeasure DEFAULT_UNIT_OF_MEASURE;
+
 public:
     // Constructors
     Animal(const std::string &species);
@@ -35,18 +43,16 @@ public:
     // Setters
     void setSpecies(const std::string &species);
     void setGender(Gender gender);
-    void setWeight(float weight);
+    void setWeight(float weight, UnitOfMeasure units);
 
     // Methods
     void printInfo();
     bool isValid();
 
-
 private:
-    static const std::string _kingdom;
     std::string _species; // Required
     enum Gender _gender{UNKNOWN_GENDER};
-    float _weight{UNKNOWN_WEIGHT};
+    float _weight{UNKNOWN_WEIGHT}; //Must be >0 to be valid, default unitOfMeasure in imperial pounds (lbs)
 };
 
 

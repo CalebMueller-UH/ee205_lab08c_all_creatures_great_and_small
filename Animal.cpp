@@ -11,6 +11,10 @@
 #include "Animal.h"
 
 using namespace std;
+
+//const UnitOfMeasure Animal::DEFAULT_UNIT_OF_MEASURE = UnitOfMeasure::LBS;
+const UnitOfMeasure Animal::DEFAULT_UNIT_OF_MEASURE = UnitOfMeasure::KG;
+
 const string Animal::_kingdom = "Animalia";
 
 // Animal Constructor Definitions
@@ -50,18 +54,57 @@ void Animal::setGender(Gender gender) {
     _gender = gender;
 }
 
-void Animal::setWeight(float weight) {
-    _weight = weight;
+void Animal::setWeight(float weight, UnitOfMeasure units) {
+    switch(units)
+    {
+        case(UnitOfMeasure::LBS):
+        {
+            if(DEFAULT_UNIT_OF_MEASURE == UnitOfMeasure::LBS){
+                _weight = weight;
+            } else
+            {
+                //Default weight is KGS, do conversion
+                _weight = weight / LBS_PER_KG;
+            }
+            break;
+        }
+        case(UnitOfMeasure::KG):
+        {
+            if(DEFAULT_UNIT_OF_MEASURE == UnitOfMeasure::KG){
+                _weight = weight;
+            } else
+            {
+                //Default weight is LBS, do conversion
+                _weight = weight * LBS_PER_KG;
+            }
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 // Animal Method Functions
 void Animal::printInfo() {
     if(this->isValid())
     {
+        std::string units_literal;
+        switch(DEFAULT_UNIT_OF_MEASURE){
+            case(UnitOfMeasure::LBS):
+            {
+                units_literal = "lbs";
+                break;
+            }
+            case(UnitOfMeasure::KG):
+            {
+                units_literal = "kg";
+                break;
+            }
+        }
         cout << "Animal Fields" << endl;
         cout << "    Kingdom = [" << _kingdom << "]" << endl;
         cout << "    Species = [" << _species << "]" << endl;
-        cout << "    Weight = [" << _weight << "]" << endl;
+        cout << "    Weight  = [" << _weight << " " << units_literal << "]" << endl;
     }else
     {
         cout << "Animal info has invalid entries and could not be printed" << endl;
