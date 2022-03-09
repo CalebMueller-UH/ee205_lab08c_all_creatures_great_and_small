@@ -11,7 +11,7 @@
 #include "Animal.h"
 
 using namespace std;
-const stringAnimal::_kingdom = "Animalia";
+const string Animal::_kingdom = "Animalia";
 
 // Animal Constructor Definitions
 Animal::Animal(const std::string &species) : _species(species) {}
@@ -63,7 +63,7 @@ void Animal::printInfo() {
 }
 
 bool Animal::isValid() {
-    if
+    return true;
 }
 
 
