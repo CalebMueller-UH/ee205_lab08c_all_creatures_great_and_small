@@ -56,14 +56,23 @@ void Animal::setWeight(float weight) {
 
 // Animal Method Functions
 void Animal::printInfo() {
-    cout << "Animal Fields" << endl;
-    cout << "    Kingdom = [" << _kingdom << "]" << endl;
-    cout << "    Species = [" << _species << "]" << endl;
-    cout << "    Weight = [" << _weight << "]" << endl;
+    if(this->isValid())
+    {
+        cout << "Animal Fields" << endl;
+        cout << "    Kingdom = [" << _kingdom << "]" << endl;
+        cout << "    Species = [" << _species << "]" << endl;
+        cout << "    Weight = [" << _weight << "]" << endl;
+    }else
+    {
+        cout << "Animal info has invalid entries and could not be printed" << endl;
+    }
 }
 
 bool Animal::isValid() {
-    return true;
+    if(_species.length() > 0 && _weight > 0){
+        return true;
+    }
+    return false;
 }
 
 
